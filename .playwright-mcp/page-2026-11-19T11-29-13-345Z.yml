@@ -1,0 +1,300 @@
+- generic [active] [ref=e1]:
+  - link "К содержимому" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Троеточие, в начало" [ref=e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [aria-hidden] [ref=e6]: Троеточие
+      - navigation "Разделы страницы" [ref=e11]:
+        - link "Возможности" [ref=e12] [cursor=pointer]:
+          - /url: "#features"
+        - link "Как это работает" [ref=e13] [cursor=pointer]:
+          - /url: "#tab"
+        - link "Безопасность" [ref=e14] [cursor=pointer]:
+          - /url: "#privacy"
+      - generic [ref=e15]:
+        - link "Вопросы" [ref=e16] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Скачать" [ref=e17] [cursor=pointer]:
+          - /url: downloads/Troetochie.dmg
+  - main [ref=e21]:
+    - region "Быстрые и умные ответы в ваших переписках" [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - heading "Быстрые и умные ответы в ваших переписках" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Троеточие помогает подобрать ответ с учётом контекста
+          - generic [ref=e29]:
+            - link "Скачать бесплатно для Mac" [ref=e30] [cursor=pointer]:
+              - /url: downloads/Troetochie.dmg
+              - generic [ref=e33]: Скачать бесплатно
+              - generic [ref=e34]: для Mac
+            - button "Смотреть демо" [ref=e35] [cursor=pointer]
+          - list "Скачать для своего устройства" [ref=e36]:
+            - listitem [ref=e37]: Скачать для
+            - listitem [ref=e38]:
+              - link "Mac" [ref=e39] [cursor=pointer]:
+                - /url: downloads/Troetochie.dmg
+            - listitem [ref=e40]:
+              - link "iPhone" [ref=e41] [cursor=pointer]:
+                - /url: https://apps.apple.com/app/id6824260050?pt=129614180&ct=site-home&mt=8
+            - listitem [ref=e42]:
+              - link "Windows" [ref=e43] [cursor=pointer]:
+                - /url: downloads/Troetochie-Windows-setup.exe
+            - listitem [ref=e44]:
+              - link "Android" [ref=e45] [cursor=pointer]:
+                - /url: https://www.rustore.ru/catalog/app/ru.troetochie.keyboard?utm_source=troetochie&utm_medium=site&utm_campaign=home
+          - link "Продукт недели на Product Radar" [ref=e46] [cursor=pointer]:
+            - /url: https://productradar.ru/product/troetochie/
+            - generic [ref=e51]:
+              - generic [ref=e52]: Продукт недели
+              - generic [ref=e53]: Product Radar
+        - 'figure "Попробуйте: так Троеточие подсказывает ответ" [ref=e56]':
+          - generic [ref=e57]:
+            - generic [ref=e62]:
+              - generic [ref=e68]: Мессенджер
+              - generic [ref=e69]:
+                - complementary [aria-hidden] [ref=e70]:
+                  - generic [ref=e71]: Поиск
+                  - generic [ref=e72]:
+                    - generic [ref=e73]: МС
+                    - generic [ref=e74]:
+                      - generic [ref=e75]: Марина Соколова
+                      - generic [ref=e76]: Сможем перенести созвон…
+                    - time [ref=e77]: 16:42
+                  - generic [ref=e78]:
+                    - generic [ref=e79]: ОП
+                    - generic [ref=e80]:
+                      - generic [ref=e81]: Отдел продаж
+                      - generic [ref=e82]: "Олег: отчёт в папке"
+                    - time [ref=e83]: 15:10
+                  - generic [ref=e84]:
+                    - generic [ref=e85]: В
+                    - generic [ref=e86]:
+                      - generic [ref=e87]: ООО «Вектор»
+                      - generic [ref=e88]: Спасибо, всё получили
+                    - time [ref=e89]: 13:27
+                  - generic [ref=e90]:
+                    - generic [ref=e91]: Д
+                    - generic [ref=e92]:
+                      - generic [ref=e93]: Дизайн
+                      - generic [ref=e94]: Новые макеты в папке
+                    - time [ref=e95]: 11:05
+                - generic [ref=e96]:
+                  - generic [ref=e97]:
+                    - generic [aria-hidden] [ref=e98]: МС
+                    - generic [ref=e99]:
+                      - generic [ref=e100]: Марина Соколова
+                      - generic [ref=e101]: печатает …
+                  - group "Переписка с Мариной" [ref=e102]:
+                    - paragraph [ref=e103]: Сегодня
+                  - generic [ref=e108]:
+                    - generic [ref=e111]:
+                      - textbox "Ваш ответ Марине" [ref=e112]
+                      - generic [aria-hidden]:
+                        - generic: Да, четверг подойдёт
+                    - button "Отправить сообщение в демо" [disabled] [ref=e114]
+            - paragraph [ref=e119]: Ответ появится серым прямо в поле
+    - region "Возможности" [ref=e120]:
+      - generic [ref=e121]:
+        - heading "Возможности" [level=2] [ref=e122]
+        - list [ref=e123]:
+          - listitem [ref=e124]:
+            - generic [ref=e127]:
+              - generic [ref=e128]: Быстрее
+              - text: Ответы за секунды
+          - listitem [ref=e129]:
+            - generic [ref=e132]:
+              - generic [ref=e133]: С учётом контекста
+              - text: Понимает переписку
+          - listitem [ref=e134]:
+            - generic [ref=e137]:
+              - generic [ref=e138]: Под вашим контролем
+              - text: Вы выбираете, что отправить
+    - region "Для кого Троеточие и как оно обращается с данными" [ref=e139]:
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - heading "Когда сложно подобрать слова" [level=2] [ref=e143]
+            - paragraph [ref=e144]: Троеточие предлагает черновик. Вы решаете, что отправить.
+          - generic [ref=e145]:
+            - tabpanel "Клиент" [ref=e146]:
+              - heading "Клиент" [level=3] [ref=e147]
+              - paragraph [ref=e150]: Вчера весь вечер ждал курьера. Где мой заказ?
+              - paragraph [ref=e151]: Подсказка
+              - paragraph [ref=e156]: Простите, что пришлось ждать. Подскажите номер заказа?
+            - tabpanel "Коллега" [ref=e157]:
+              - heading "Коллега" [level=3] [ref=e158]
+              - paragraph [ref=e161]: Возьмёшь ещё отчёт по продажам? Очень выручишь
+              - paragraph [ref=e162]: Подсказка
+              - paragraph [ref=e167]: Извини, в этот раз не возьмусь.
+            - tabpanel "Друг" [ref=e168]:
+              - heading "Друг" [level=3] [ref=e169]
+              - paragraph [ref=e172]: Опять отказ после собеседования. А я уже почти поверил, что возьмут
+              - paragraph [ref=e173]: Подсказка
+              - paragraph [ref=e178]: Блин, обидно. Хочешь рассказать, как всё прошло?
+        - generic [ref=e179]:
+          - heading "Безопасность и конфиденциальность" [level=2] [ref=e184]:
+            - text: Безопасность
+            - generic [ref=e185]: и конфиденциальность
+          - list [ref=e186]:
+            - listitem [ref=e187]:
+              - generic [ref=e190]: Не храним переписку
+            - listitem [ref=e191]:
+              - generic [ref=e194]: Отправляете только вы
+    - region "Работает в ваших чатах" [ref=e195]:
+      - generic [ref=e196]:
+        - heading "Работает в ваших чатах" [level=2] [ref=e197]
+        - list [ref=e198]:
+          - listitem [ref=e199]:
+            - generic [ref=e201]: Telegram
+          - listitem [ref=e202]:
+            - generic [ref=e204]: WhatsApp
+          - listitem [ref=e205]:
+            - generic [ref=e207]: MAX
+          - listitem [ref=e208]:
+            - generic [ref=e210]: VK Teams
+          - listitem [ref=e211]:
+            - generic [ref=e213]: Пачка
+          - listitem [ref=e214]:
+            - generic [ref=e216]: TrueConf
+          - listitem [ref=e217]:
+            - generic [ref=e219]: Mattermost
+          - listitem [ref=e220]:
+            - generic [ref=e222]: Slack
+          - listitem [ref=e223]:
+            - generic [ref=e225]: Почта
+          - listitem [ref=e226]:
+            - generic [ref=e228]: Браузер
+    - region "Частые вопросы" [ref=e229]:
+      - generic [ref=e230]:
+        - heading "Частые вопросы" [level=2] [ref=e232]:
+          - text: Частые
+          - generic [ref=e233]: вопросы
+        - generic [ref=e234]:
+          - group [ref=e235]:
+            - generic "Как это работает?" [ref=e236] [cursor=pointer]
+          - group [ref=e239]:
+            - generic "Какие данные используются?" [ref=e240] [cursor=pointer]
+          - group [ref=e243]:
+            - generic "Нужно ли переходить в отдельный чат?" [ref=e244] [cursor=pointer]
+          - group [ref=e247]:
+            - generic "На каких устройствах работает?" [ref=e248] [cursor=pointer]
+          - group [ref=e251]:
+            - generic "Это бесплатно?" [ref=e252] [cursor=pointer]
+          - group [ref=e255]:
+            - generic "Нужен ли VPN?" [ref=e256] [cursor=pointer]
+    - region "Попробуйте Троеточие" [ref=e259]:
+      - generic [ref=e262]:
+        - heading "Попробуйте Троеточие" [level=2] [ref=e263]
+        - link "Скачать бесплатно" [ref=e264] [cursor=pointer]:
+          - /url: downloads/Troetochie.dmg
+        - link "Или попробуйте нашего бота без установки →" [ref=e268] [cursor=pointer]:
+          - /url: https://t.me/troetochie_as_bot?start=site
+    - 'region "Троеточие делаем мы: Рустем, Аскар и Андрей" [ref=e270]':
+      - generic [ref=e271]:
+        - list [ref=e272]:
+          - listitem [ref=e273]:
+            - img "Рустем" [ref=e274]
+          - listitem [ref=e275]:
+            - img "Аскар" [ref=e276]
+          - listitem [ref=e277]:
+            - img "Андрей" [ref=e278]
+        - generic [ref=e279]:
+          - 'heading "Троеточие делаем мы: Рустем, Аскар и Андрей" [level=2] [ref=e280]'
+          - paragraph [ref=e281]:
+            - text: Если что-то не работает или есть идея,
+            - link "напишите нам в Telegram" [ref=e282] [cursor=pointer]:
+              - /url: https://t.me/troetochie_support
+            - text: .
+  - contentinfo [ref=e283]:
+    - generic [ref=e284]:
+      - generic [ref=e285]:
+        - link "Троеточие, в начало" [ref=e286] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e291]: Троеточие
+        - navigation "Разделы страницы в подвале" [ref=e292]:
+          - link "Возможности" [ref=e293] [cursor=pointer]:
+            - /url: "#features"
+          - link "Безопасность" [ref=e294] [cursor=pointer]:
+            - /url: "#privacy"
+          - link "Вопросы" [ref=e295] [cursor=pointer]:
+            - /url: "#faq"
+          - link "Поддержка" [ref=e296] [cursor=pointer]:
+            - /url: https://t.me/troetochie_support
+        - generic [ref=e297]:
+          - link "Новости Троеточия в Telegram" [ref=e298] [cursor=pointer]:
+            - /url: https://t.me/troetoochie
+          - link "Написать нам на почту" [ref=e300] [cursor=pointer]:
+            - /url: mailto:rustemhak@mail.ru
+      - generic [ref=e302]:
+        - navigation "Приложение" [ref=e303]:
+          - heading "Приложение" [level=3] [ref=e304]
+          - link "Mac" [ref=e305] [cursor=pointer]:
+            - /url: /mac/
+          - link "Windows" [ref=e306] [cursor=pointer]:
+            - /url: /windows/
+          - link "iPhone" [ref=e307] [cursor=pointer]:
+            - /url: /iphone/
+          - link "Android" [ref=e308] [cursor=pointer]:
+            - /url: /android/
+          - link "Совместимость" [ref=e309] [cursor=pointer]:
+            - /url: /compatibility/
+        - navigation "Бесплатно онлайн" [ref=e310]:
+          - heading "Бесплатно онлайн" [level=3] [ref=e311]
+          - link "Ответ на сообщение" [ref=e312] [cursor=pointer]:
+            - /url: /tools/otvet-na-soobshchenie/
+          - link "Ответ на письмо" [ref=e313] [cursor=pointer]:
+            - /url: /tools/otvet-na-pismo/
+          - link "Ответ на отзыв" [ref=e314] [cursor=pointer]:
+            - /url: /tools/otvet-na-otzyv/
+          - link "Улучшить текст" [ref=e315] [cursor=pointer]:
+            - /url: /tools/uluchshit-tekst/
+          - link "Перефразировать текст" [ref=e316] [cursor=pointer]:
+            - /url: /tools/perefrazirovat-tekst/
+        - navigation "Что ответить" [ref=e317]:
+          - heading "Что ответить" [level=3] [ref=e318]
+          - link "Как начать переписку" [ref=e319] [cursor=pointer]:
+            - /url: /chto-otvetit/kak-nachat-perepisku/
+          - link "На «как дела»" [ref=e320] [cursor=pointer]:
+            - /url: /chto-otvetit/kak-dela/
+          - link "Все ситуации" [ref=e321] [cursor=pointer]:
+            - /url: /chto-otvetit/
+        - navigation "Разборы" [ref=e322]:
+          - heading "Разборы" [level=3] [ref=e323]
+          - link "Правки сверх договора" [ref=e324] [cursor=pointer]:
+            - /url: /guides/client-revisions/#extra
+          - link "Как вежливо отказаться от лишней работы" [ref=e325] [cursor=pointer]:
+            - /url: /guides/decline-extra-work/
+          - link "Нейросеть для деловой переписки" [ref=e326] [cursor=pointer]:
+            - /url: /guides/ai-replies/
+          - link "Все статьи" [ref=e327] [cursor=pointer]:
+            - /url: /guides/
+        - navigation "Ещё" [ref=e328]:
+          - heading "Ещё" [level=3] [ref=e329]
+          - link "Сценарии" [ref=e330] [cursor=pointer]:
+            - /url: /scenarios/
+          - link "Технические подробности" [ref=e331] [cursor=pointer]:
+            - /url: /technical/
+          - link "Личный кабинет" [ref=e332] [cursor=pointer]:
+            - /url: /account/
+          - link "Новости" [ref=e333] [cursor=pointer]:
+            - /url: https://t.me/troetoochie
+      - generic [ref=e334]:
+        - paragraph [ref=e335]: © 2026 Троеточие
+        - paragraph [ref=e336]:
+          - link "Данные и приватность" [ref=e337] [cursor=pointer]:
+            - /url: /privacy/
+          - link "Лицензии" [ref=e338] [cursor=pointer]:
+            - /url: /licenses/
+        - button "Тёмная тема" [ref=e339] [cursor=pointer]:
+          - generic [ref=e342]: Тема
+      - paragraph [ref=e343]:
+        - text: "Реквизиты разработчика: Хакимуллин Рустем Рафаилевич, физическое лицо,"
+        - link "rustemhak@mail.ru" [ref=e344] [cursor=pointer]:
+          - /url: mailto:rustemhak@mail.ru
+      - paragraph [ref=e345]:
+        - text: Статистику посещений собирают Яндекс Метрика и
+        - link "наш счётчик" [ref=e346] [cursor=pointer]:
+          - /url: /privacy/#site-title
+        - text: . Наш счётчик работает без cookies и личных данных.
