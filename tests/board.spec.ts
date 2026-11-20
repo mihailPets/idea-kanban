@@ -91,3 +91,54 @@ test('Просроченные незавершённые задачи отме�
   await expect(current).toBeVisible();
   await expect(current.getByText('⚠', { exact: true })).toHaveCount(0);
 });
+
+test('Редактор переключается сразу для чистого черновика и спрашивает о сохранении изменённого', async ({ page }) => {
+  await page.goto('/');
+  const first = page.getByRole('button', { name: /Редактировать задачу: Разработать план/ });
+  const second = page.getByRole('button', { name: /Редактировать задачу: Написать документацию/ });
+  const form = page.getByRole('form', { name: 'Редактирование задачи' });
+  const description = form.getByLabel('Описание:');
+  const dialog = page.getByRole('dialog');
+  await first.click({ timeout: 2000 });
+  const original = await description.inputValue();
+  await description.fill('Временное изменение');
+  await description.fill(original);
+  await second.click({ timeout: 2000 });
+  await expect(description).toHaveValue(/Написать документацию/);
+  await expect(dialog).toHaveCount(0);
+
+  await description.fill('');
+  await first.click({ timeout: 2000 });
+  await dialog.getByRole('button', { name: 'Сохранить', exact: true }).click();
+  await expect(form.getByRole('alert')).toHaveText('Введите описание задачи.');
+  await expect(description).toBeFocused();
+
+  await first.click({ timeout: 2000 });
+  await dialog.getByRole('button', { name: 'Без сохранения' }).click();
+  await expect(description).toHaveValue(original);
+  await description.fill('Сохранённое описание');
+  await second.click({ timeout: 2000 });
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(description).toHaveValue('Сохранённое описание');
+
+  await second.click({ timeout: 2000 });
+  await dialog.getByRole('button', { name: 'Сохранить', exact: true }).click();
+  await expect(description).toHaveValue(/Написать документацию/);
+  await expect(page.getByText('Сохранённое описание', { exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByText('Сохранённое описание', { exact: true })).toBeVisible();
+});
+
+test('Фон сохраняет масштаб и положение при изменении высоты списка', async ({ page }) => {
+  await page.setViewportSize({ width: 1200, height: 450 });
+  await page.goto('/');
+  const main = page.getByRole('main');
+  const backgroundAtTop = () => page.screenshot({ clip: { x: 480, y: 0, width: 230, height: 45 } });
+  const before = await backgroundAtTop();
+  const height = await main.evaluate((element) => element.getBoundingClientRect().height);
+  await page.getByRole('searchbox').fill('нет такой задачи');
+  await expect(page.getByText('Задачи не найдены.')).toBeVisible();
+  expect(await main.evaluate((element) => element.getBoundingClientRect().height)).toBeLessThan(height);
+  expect(await backgroundAtTop()).toEqual(before);
+});

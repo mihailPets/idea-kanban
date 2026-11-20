@@ -36,7 +36,7 @@ export function TaskCard({ task, overdue, disabled, onEdit, onDelete }: Props) {
       <div className={styles.actions}>
         <button type="button" ref={setActivatorNodeRef} {...attributes} {...listeners}
           disabled={disabled} data-drag-task={task.id} className={styles.handle} aria-label={`Перенести задачу: ${task.text}`}>⠿</button>
-        <button type="button" data-edit-task={task.id} aria-label={`Редактировать задачу: ${task.text}`} onClick={onEdit} disabled={disabled}>
+        <button type="button" data-edit-task={task.id} aria-label={`Редактировать задачу: ${task.text}`} onClick={onEdit}>
           <img src={editIcon} alt="" />
         </button>
         <button type="button" aria-label={`Удалить задачу: ${task.text}`} onClick={onDelete} disabled={disabled}>

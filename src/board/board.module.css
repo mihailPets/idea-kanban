@@ -9,8 +9,17 @@
   min-height: 100vh;
   margin-inline: auto;
   padding: 58px var(--gutter) 48px;
-  background: #11151b url('../assets/background.webp') center top / cover no-repeat;
+  isolation: isolate;
   color: var(--strong);
+}
+.page::before {
+  content: '';
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: max(0px, (100% - 1920px) / 2);
+  width: clamp(768px, 100%, 1920px);
+  z-index: -1;
+  background: #11151b url('../assets/background.webp') center top / cover no-repeat;
 }
 .header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 52px; }
 .header h1 { font-size: 40px; line-height: 1; }
@@ -97,6 +106,25 @@
 .formActions { display: flex; gap: 8px; justify-content: end; }
 .formActions button { width: 40px; height: 40px; border-radius: 50%; }
 .formActions button:hover { background: rgb(255 255 255 / 8%); }
+.confirmation {
+  width: min(30rem, calc(100% - 32px));
+  padding: 24px;
+  border: 1px solid var(--focus);
+  border-radius: 8px;
+  background: #171c24;
+  color: var(--strong);
+}
+.confirmation::backdrop { background: rgb(0 0 0 / 60%); }
+.confirmation h2 { font-size: 18px; }
+.confirmationActions { display: flex; flex-wrap: wrap; justify-content: end; gap: 8px; margin-top: 20px; }
+.confirmationActions button {
+  padding: 8px 12px;
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 4px;
+  background: #252c36;
+  color: inherit;
+}
+.confirmationActions button:last-child { background: #005a8e; }
 .warning { margin-block: 12px; background: rgb(0 0 0 / 80%); padding: 8px 12px; }
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (hover: none) { .actions { opacity: 1; } }

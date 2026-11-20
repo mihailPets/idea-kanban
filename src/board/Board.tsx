@@ -9,8 +9,8 @@ import { formatDay, isOverdue } from './calendar';
 import { columnCoordinates, findDropTarget, findStatus } from './drag';
 import { TaskCard } from './TaskCard';
 import { TaskForm } from './TaskForm';
-import { visibleTasks } from './tasks';
-import { statuses, type Status } from './types';
+import { visibleTasks, type TaskDraft } from './tasks';
+import { statuses, type Status, type TaskFields } from './types';
 import { useTasks } from './useTasks';
 import styles from './board.module.css';
 
@@ -35,7 +35,8 @@ function Column({ status, children, add }: { status: Status; children: ReactNode
   );
 }
 
-type Editor = { mode: 'new' } | { mode: 'edit'; id: number };
+type EditorTarget = { mode: 'new' } | { mode: 'edit'; id: number };
+type Editor = EditorTarget & { initial: TaskDraft; draft: TaskDraft };
 
 const searchLockedMessage = 'Поиск доступен после сохранения или отмены формы.';
 
@@ -48,9 +49,10 @@ export function Board() {
   const { tasks, saveFailed, create, update, remove, move } = useTasks();
   const [query, setQuery] = useState('');
   const [editor, setEditor] = useState<Editor | null>(null);
+  const [nextEditor, setNextEditor] = useState<EditorTarget | null>(null);
   const [dragId, setDragId] = useState<number | null>(null);
   const [now, setNow] = useState(() => new Date());
-  const returnFocus = useRef<Editor | null>(null);
+  const returnFocus = useRef<EditorTarget | null>(null);
   const returnDragFocus = useRef<number | null>(null);
   const board = useRef<HTMLElement>(null);
   const search = useRef<HTMLInputElement>(null);
@@ -89,10 +91,48 @@ export function Board() {
     returnDragFocus.current = null;
   }, [dragId]);
 
-  function openEditor(next: Editor) {
+  function openEditor(next: EditorTarget) {
+    const task = next.mode === 'edit' ? tasks.find(({ id }) => id === next.id) : undefined;
+    const today = formatDay(Date.now());
+    const initial = task
+      ? { start: formatDay(task.startDay), end: formatDay(task.endDay), text: task.text }
+      : { start: today, end: today, text: '' };
     returnFocus.current = next;
-    setEditor(next);
+    setEditor({ ...next, initial, draft: initial });
   }
+
+  function requestEditor(next: EditorTarget) {
+    if (editor && (editor.draft.start !== editor.initial.start ||
+      editor.draft.end !== editor.initial.end || editor.draft.text !== editor.initial.text)) {
+      setNextEditor(next);
+    } else {
+      openEditor(next);
+    }
+  }
+
+  function finishSwitch() {
+    if (nextEditor) openEditor(nextEditor);
+    setNextEditor(null);
+  }
+
+  function saveEditor(fields: TaskFields) {
+    if (!editor) return;
+    if (editor.mode === 'new') create(fields);
+    else update(editor.id, fields);
+    if (nextEditor) finishSwitch();
+    else setEditor(null);
+  }
+
+  const editorForm = editor && <TaskForm
+    key={editor.mode === 'edit' ? editor.id : 'new'}
+    task={editor.mode === 'edit' ? tasks.find(({ id }) => id === editor.id) : undefined}
+    draft={editor.draft}
+    onDraftChange={(draft) => setEditor({ ...editor, draft })}
+    switchRequested={nextEditor !== null}
+    onKeepEditing={() => setNextEditor(null)}
+    onDiscardAndSwitch={finishSwitch}
+    onCancel={() => setEditor(null)}
+    onSave={saveEditor} />;
 
   return (
     <main ref={board} className={styles.page}>
@@ -139,16 +179,12 @@ export function Board() {
           {statuses.map((status) => (
             <Column key={status} status={status}
               add={status === 'todo' && !editor ? () => openEditor({ mode: 'new' }) : undefined}>
-              {status === 'todo' && editor?.mode === 'new' && <TaskForm
-                onCancel={() => setEditor(null)}
-                onSave={(fields) => { create(fields); setEditor(null); }} />}
+              {status === 'todo' && editor?.mode === 'new' && editorForm}
               {visible.filter((task) => task.type === status).map((task) =>
                 editor?.mode === 'edit' && editor.id === task.id
-                  ? <TaskForm key={task.id} task={task}
-                      onCancel={() => setEditor(null)}
-                      onSave={(fields) => { update(task.id, fields); setEditor(null); }} />
+                  ? editorForm
                   : <TaskCard key={task.id} task={task} overdue={isOverdue(task, now)} disabled={!!editor}
-                      onEdit={() => openEditor({ mode: 'edit', id: task.id })}
+                      onEdit={() => requestEditor({ mode: 'edit', id: task.id })}
                       onDelete={() => { remove(task.id); search.current?.focus(); }} />)}
             </Column>
           ))}
